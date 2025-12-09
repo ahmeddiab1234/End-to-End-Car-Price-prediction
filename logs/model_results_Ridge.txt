@@ -61,3 +61,10 @@ MSE for Val: 1009.9339789484856
 R2-score for Val: -57.61888873354064
 parameters: alpha = 3, fit-intercept = True
 --------------------------------------------------------------------------------
+Training Path
+MSE for Train: 10.596567550798797
+R2-score for Train: 0.36616545320577243
+MSE for Val: 1439.412269045375
+R2-score for Val: -82.54679553282757
+parameters: alpha = 3, fit-intercept = False
+--------------------------------------------------------------------------------

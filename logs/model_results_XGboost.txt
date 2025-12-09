@@ -1,0 +1,154 @@
+Training Validaion path
+MSE for Train: 6.546759128570557
+R2-score for Train: 0.6084051132202148
+MSE for Val: 8.76016616821289
+R2-score for Val: 0.4915398359298706
+parameters: {'n_estimators': 300, 'learning_rate': 0.1, 'max_depth': 3, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 5.383437156677246
+R2-score for Train: 0.6779892444610596
+MSE for Val: 8.550223350524902
+R2-score for Val: 0.5037254095077515
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 3, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 8.863768577575684
+R2-score for Train: 0.46981292963027954
+MSE for Val: 9.85739803314209
+R2-score for Val: 0.4278540015220642
+parameters: {'n_estimators': 600, 'learning_rate': 0.01, 'max_depth': 3, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 6.607682704925537
+R2-score for Train: 0.6047608852386475
+MSE for Val: 8.79269027709961
+R2-score for Val: 0.4896520972251892
+parameters: {'n_estimators': 600, 'learning_rate': 0.05, 'max_depth': 3, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.910107135772705
+R2-score for Train: 0.7661166191101074
+MSE for Val: 8.655305862426758
+R2-score for Val: 0.4976261854171753
+parameters: {'n_estimators': 600, 'learning_rate': 0.2, 'max_depth': 3, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 2.1657443046569824
+R2-score for Train: 0.870455801486969
+MSE for Val: 8.425455093383789
+R2-score for Val: 0.5109672546386719
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 5, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 1.5042121410369873
+R2-score for Train: 0.910025417804718
+MSE for Val: 8.119871139526367
+R2-score for Val: 0.528704047203064
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 0.8685816526412964
+R2-score for Train: 0.9480457305908203
+MSE for Val: 8.855317115783691
+R2-score for Val: 0.48601704835891724
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 10, 'gamma': 1, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 0.20140060782432556
+R2-score for Train: 0.9879531860351562
+MSE for Val: 8.613086700439453
+R2-score for Val: 0.5000767111778259
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 0, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4021193981170654
+R2-score for Train: 0.7965019345283508
+MSE for Val: 8.112064361572266
+R2-score for Val: 0.5291571617126465
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4155285358428955
+R2-score for Train: 0.7956998348236084
+MSE for Val: 8.29114055633545
+R2-score for Val: 0.5187631845474243
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0.5, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.5125226974487305
+R2-score for Train: 0.789898157119751
+MSE for Val: 8.205862998962402
+R2-score for Val: 0.5237128734588623
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 1, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.7509045600891113
+R2-score for Train: 0.7756393551826477
+MSE for Val: 8.1902437210083
+R2-score for Val: 0.524619460105896
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 1, 'reg_lambda': 1}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.7298834323883057
+R2-score for Train: 0.7768967151641846
+MSE for Val: 8.2642240524292
+R2-score for Val: 0.5203254222869873
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 1}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.6450629234313965
+R2-score for Train: 0.7819702625274658
+MSE for Val: 8.161337852478027
+R2-score for Val: 0.5262972116470337
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0.5}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.5343518257141113
+R2-score for Train: 0.7885924577713013
+MSE for Val: 8.232935905456543
+R2-score for Val: 0.5221414566040039
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0.1, 'reg_lambda': 0.1}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4021193981170654
+R2-score for Train: 0.7965019345283508
+MSE for Val: 8.112064361572266
+R2-score for Val: 0.5291571617126465
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 2.579075336456299
+R2-score for Train: 0.8457323908805847
+MSE for Val: 8.459988594055176
+R2-score for Val: 0.5089628100395203
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 2.109619617462158
+R2-score for Train: 0.8738129138946533
+MSE for Val: 8.528948783874512
+R2-score for Val: 0.5049602389335632
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.5272374153137207
+R2-score for Train: 0.7890180349349976
+MSE for Val: 8.169540405273438
+R2-score for Val: 0.5258211493492126
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4021193981170654
+R2-score for Train: 0.7965019345283508
+MSE for Val: 8.112064361572266
+R2-score for Val: 0.5291571617126465
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4021193981170654
+R2-score for Train: 0.7965019345283508
+MSE for Val: 8.112064361572266
+R2-score for Val: 0.5291571617126465
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------

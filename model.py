@@ -76,42 +76,7 @@ class Train():
 
         return model
 
-    def try_neural_network(self, hiden_layers=1, solver=1, learning_rate=0.1, alpha=0.1, max_iter=300):
-        log_result(f'Training Path', 'Neural_Network')
-        model = nnr(
-            hidden_layer_sizes=hiden_layers,
-            activation='identity',
-            solver=solver,
-            learning_rate='adaptive',
-            learning_rate_init=learning_rate,
-            alpha=alpha,
-            max_iter=max_iter,
-            random_state=RANDOM_STATE
-        )
-
-        model.fit(self.x_train, self.t_train)
-        train_score, train_error = eval_model(model, self.x_train, self.t_train, 'train')
-        val_score, val_error = eval_model(model, self.x_val, self.t_val, 'val')
-
-        log_result(f'Score train: {train_score}', name='Neural_Network')
-        log_result(f'MSE train: {train_error}', name='Neural_Network')
-        log_result(f'Score val: {val_score}', name='Neural_Network')
-        log_result(f'MSE val: {val_error}', name='Neural_Network')
-
-        current_params = {
-            'hidden_layers': hiden_layers,
-            'solver': solver,
-            'learning_rate_init': learning_rate,
-            'max_iter': max_iter,
-            'alpha': alpha
-        }
-
-        log_result(f'Parameters: {current_params}', name='Neural_Network')
-        log_result('--'*40, name='Neural_Network')
-
-        return model
-
-
+    
     def try_xgboost(self, n_estimators=1, learning_rate=1, max_depth=1, gamma=1, reg_alpha=1, reg_lambda=1):
         log_result(f'Training Validaion path', 'XGboost')
 
@@ -161,7 +126,7 @@ if __name__ == '__main__':
     print(x_train.shape, x_val.shape, t_train.shape, t_val.shape) 
 
     train =Train(x_train, x_val, t_train, t_val)
-    model = train.try_ridge(3, True, 'auto')
+    model = train.try_xgboost(600, 0.1, 7, 5, 0, 0)
     # save_model(model, poly, scaler, 'LinearRegression', 'val')
 
     print("Successful")

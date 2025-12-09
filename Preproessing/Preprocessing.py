@@ -35,20 +35,22 @@ class Handling:
         self.df['Prod. year'] = self.df['Prod. year'].str.replace('unknown','0',regex=False).astype('Int64')
         self.df['Cylinders'] = self.df['Cylinders'].astype('Int64')
         self.df['Engine volume'] = self.df['Engine volume'].str.replace(' Turbo','',regex=False).astype(float)
-
+        return self.df
 
     def remove_usless_featus(self):
         self.df.drop('ID', axis=1, inplace=True)
         self.df.drop('Random_notes', axis=1, inplace=True)
+        return self.df
     
-
     def handling_missing(self):
         self.df['Mileage'] = self.df['Mileage'].fillna(self.df['Mileage'].mean().round()).astype('int64')
-        self.df['Levy'] = self.df['Levy'].fillna(int(df['Levy'].mean()))
+        self.df['Levy'] = self.df['Levy'].fillna(int(self.df['Levy'].mean()))
         self.df['Color'] = self.df['Color'].fillna(self.df['Color'].mode()[0])
+        return self.df
 
     def remove_dublicates(self):
-        self.df = self.df.drop_duplicates(keep='first', inplace=True)
+        self.df = self.df.drop_duplicates(keep='first')
+        return self.df
 
     def handling_outlier(self):
         feats = ['Levy', 'Engine volume']
@@ -66,13 +68,15 @@ class Handling:
             
             if 'int' in str(self.df[col].dtype):
                 self.df[col] = self.df[col].round().astype('Int64')
-
+        return self.df
 
     def remove_negative_price(self):
-        self.df['Price'] = self.df[self.df['Price'] > 0]
+        self.df = self.df[self.df['Price'] > 0].copy()
+        return self.df
 
     def apply_price_log(self):
         self.df['Price'] = np.log(self.df['Price'])
+        return self.df
 
     def label_encoding(self):
         feats = ['Manufacturer', 'Model', 'Category', 
@@ -82,42 +86,90 @@ class Handling:
         le = LabelEncoder()
         for col in feats:
             self.df[col] = le.fit_transform(self.df[col])
+        return self.df
 
-class Scaling(df):
-    def polynomial_feature(self, x, x_val=None, degree=2, include_bias=True):
-        self.poly = PolynomialFeatures(degree=degree, include_bias=include_bias)
-        x = self.poly.fit_transform(x)
-        if x_val is not None:
-            x_val = self.poly.transform(x_val)
-            return self.poly, x, x_val
-        return self.poly, x
+class Scaling():
+    def __init__(self, x, x_val, option=2, degree=2, include_bias=True):
+        self.x=x
+        self.x_val=x_val
+        self.option=option
+        self.degree=degree
+        self.include_bias=include_bias
 
-    def scaling(self, x, x_val=None, option=2):
-        if option == 1:
+    def polynomial_feature(self):
+        self.poly = PolynomialFeatures(degree=self.degree, include_bias=self.include_bias)
+        self.x = self.poly.fit_transform(self.x)
+        if self.x_val is not None:
+            self.x_val = self.poly.transform(self.x_val)
+            return self.poly, self.x, self.x_val
+        return self.poly, self.x
+
+    def scaling(self):
+        if self.option == 1:
             self.scaler = MinMaxScaler()
-        elif option == 2:
+        elif self.option == 2:
             self.scaler = StandardScaler()
-        elif option == 3:
+        elif self.option == 3:
             self.scaler = Normalizer()
         else:
-            return None, x, x_val
-                                            
-        x = self.scaler.fit_transform(x)
-        if x_val is not None:
-            x_val = self.scaler.transform(x_val)
-            return self.scaler, x, x_val
-        return self.scaler, x
+            return None, self.x, self.x_val
+
+        self.x = self.scaler.fit_transform(self.x)
+        if self.x_val is not None:
+            self.x_val = self.scaler.transform(self.x_val)
+            return self.scaler, self.x, self.x_val
+        return self.scaler, x, None
+
+class Preprocessing():
+    def __init__(self, df):
+        self.df = df
+        self.poly=None
+        self.scaler=None
+        
+    def prepare_data(self, apply_log=True) :
+        handle = Handling(self.df)
+        self.df = handle.fix_data_type()
+        self.df = handle.remove_usless_featus()
+        self.df = handle.handling_missing()
+        self.df = handle.remove_dublicates()
+        self.df = handle.handling_outlier()
+        self.df = handle.remove_negative_price()
+        if apply_log:
+            self.df = handle.apply_price_log()
+        self.df = handle.label_encoding()
+
+        return self.df
 
 
+    def fit_transform(self, x, x_val=None, option=2, degree=2, include_bias=True):
+        scale = Scaling(x, x_val, option, degree, include_bias)
+        self.poly, x = scale.polynomial_feature()
+        self.scaler, x, x_val = scale.scaling()
+
+        return x, x_val
+
+    def transform(self, x):
+        x = self.poly.transform(x)
+        x = self.scaler.transform(x)
+        return x
 
 
 if __name__ == '__main__':
     df = load_df('data/car_price_Dataset.csv')
-    preprocess = Preproccesing(df)
-    preprocess.fix_data_type()
-    for col in df.columns:
-        print(f'{col} : {df[col].dtype}')
+    preprocess = Preprocessing(df)
+
+    df = preprocess.prepare_data(False)
+
+    df, x,t = load_x_t(df)
+    x_train, x_val, t_train, t_val = split_data(x, t)
+    x_train_, _ = preprocess.fit_transform(x_train, None)
+    print(df.shape ,x_train.shape, t_train.shape)
+
+    x_val_ = preprocess.transform(x_val)
+    print(x_val.shape, t_val.shape)
 
 
+    # for col in df.columns:
+    #     print(f'{col} : {df[col].dtype}')
 
 

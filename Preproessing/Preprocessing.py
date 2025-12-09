@@ -32,7 +32,8 @@ class Handling:
         self.df['Levy'] = self.df['Levy'].str.replace('-','0',regex=False).astype(float).astype('Int64') 
         self.df['Mileage'] = self.df['Mileage'].str.replace('KM', '', regex=False)
         self.df['Mileage'] = pd.to_numeric(self.df['Mileage'], errors='coerce')
-        self.df['Prod. year'] = self.df['Prod. year'].str.replace('unknown','0',regex=False).astype('Int64')
+        self.df['Prod. year'] = (
+        self.df['Prod. year'].astype(str).replace('unknown', '0').astype('Int64'))
         self.df['Cylinders'] = self.df['Cylinders'].astype('Int64')
         self.df['Engine volume'] = self.df['Engine volume'].str.replace(' Turbo','',regex=False).astype(float)
         return self.df
@@ -102,7 +103,7 @@ class Scaling():
         if self.x_val is not None:
             self.x_val = self.poly.transform(self.x_val)
             return self.poly, self.x, self.x_val
-        return self.poly, self.x
+        return self.poly, self.x, None
 
     def scaling(self):
         if self.option == 1:
@@ -118,7 +119,7 @@ class Scaling():
         if self.x_val is not None:
             self.x_val = self.scaler.transform(self.x_val)
             return self.scaler, self.x, self.x_val
-        return self.scaler, x, None
+        return self.scaler, self.x, None
 
 class Preprocessing():
     def __init__(self, df):
@@ -143,26 +144,26 @@ class Preprocessing():
 
     def fit_transform(self, x, x_val=None, option=2, degree=2, include_bias=True):
         scale = Scaling(x, x_val, option, degree, include_bias)
-        self.poly, x = scale.polynomial_feature()
+        self.poly, x, x_val = scale.polynomial_feature()
         self.scaler, x, x_val = scale.scaling()
 
-        return x, x_val
+        return x, x_val, self.poly, self.scaler
 
-    def transform(self, x):
-        x = self.poly.transform(x)
-        x = self.scaler.transform(x)
+    def transform(self, x, poly, scaler):
+        x = poly.transform(x)
+        x = scaler.transform(x)
         return x
 
 
 if __name__ == '__main__':
-    df = load_df('data/car_price_Dataset.csv')
+    df = load_df('data/train_car_price.csv')
     preprocess = Preprocessing(df)
 
     df = preprocess.prepare_data(False)
 
     df, x,t = load_x_t(df)
     x_train, x_val, t_train, t_val = split_data(x, t)
-    x_train_, _ = preprocess.fit_transform(x_train, None)
+    x_train_, _, _, _ = preprocess.fit_transform(x_train, None)
     print(df.shape ,x_train.shape, t_train.shape)
 
     x_val_ = preprocess.transform(x_val)

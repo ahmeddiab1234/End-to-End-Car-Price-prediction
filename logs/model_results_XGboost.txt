@@ -152,3 +152,10 @@ MSE for Val: 8.112064361572266
 R2-score for Val: 0.5291571617126465
 parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
 --------------------------------------------------------------------------------
+Training Validaion path
+MSE for Train: 3.4021193981170654
+R2-score for Train: 0.7965019345283508
+MSE for Val: 8.112064361572266
+R2-score for Val: 0.5291571617126465
+parameters: {'n_estimators': 600, 'learning_rate': 0.1, 'max_depth': 7, 'gamma': 5, 'reg_alpha': 0, 'reg_lambda': 0}
+--------------------------------------------------------------------------------

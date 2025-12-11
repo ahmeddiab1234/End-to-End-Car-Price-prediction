@@ -1,0 +1,38 @@
+RANDOME_STATE: 42
+
+dataset:
+  path: 'data\train_car_price.csv'
+
+
+preprocessing:
+  apply_log: True
+  fit_encoders: True
+
+  polynomial:
+    degree: 2
+    include_bias: True
+  
+  scaling:
+    option: 1
+
+
+Model:
+  model_name: XGBoost
+
+  LinearRegression:
+    fit_intercept: True
+
+  Ridge:
+    alpha: 1
+    fit_intercept: True
+    solver: 'auto'
+    positive: False
+
+  XGBoost:
+    n_estimators: 600
+    learning_rate: 0.1
+    max_depth: 7
+    gamma: 5
+    reg_alpha: 0
+    reg_lambda: 0
+

@@ -70,7 +70,6 @@ if submitted:
         "Random_notes": ""
     }
 
-    # call local backend (adjust if backend runs on different host/port)
     try:
         api_url = st.secrets.get("API_URL", "http://localhost:8000/predict")
         resp = requests.post(api_url, json=payload, timeout=10)
